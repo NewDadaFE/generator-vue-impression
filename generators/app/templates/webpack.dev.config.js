@@ -58,9 +58,6 @@ module.exports = {
             loader: 'json',
         }],
     },
-    // eslint: {
-    //     formatter: require('eslint-friendly-formatter')
-    // },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
