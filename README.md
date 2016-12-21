@@ -1,5 +1,5 @@
 # generator-vue-impression [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> 一个Vue 2.0脚手架工具。技术栈：vue、vuex、vue-router、es6、gulp、scss、webpack。
+> Yeoman generator for Vue 2.0 project.
 
 ## Installation
 
