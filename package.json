@@ -1,6 +1,6 @@
 {
   "name": "generator-vue-impression",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "一个Vue 2.0脚手架工具。技术栈：vue、vuex、vue-router、es6、gulp、scss、webpack。",
   "homepage": "https://github.com/NewDadaFE/generator-vue-impression",
   "author": {
@@ -43,10 +43,11 @@
       "mocha": true
     }
   },
-  "repository": "NewDadaFE/generator-vue-impression",
+  "repository": "https://github.com/NewDadaFE/generator-vue-impression",
   "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "test": "gulp",
+    "prepublish": "npm config set registry http://registry.npmjs.org",
+    "postpublish": "npm config set registry https://registry.npm.taobao.org/"
   },
   "license": "MIT"
 }
