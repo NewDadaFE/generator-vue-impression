@@ -10,7 +10,7 @@ Vue.use(VueRouter);
 const routes = [{
     path: '/',
     component: Index,
-},{
+}, {
     path: '/counter',
     component: Counter,
 }, {
