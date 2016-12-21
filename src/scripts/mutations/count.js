@@ -16,6 +16,9 @@ const mutations = {
     decrement(state) {
         state.count -= 1;
     },
+    reset(state) {
+        state.count = 0;
+    },
 };
 
 export default {

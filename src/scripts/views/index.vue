@@ -5,7 +5,10 @@
             <router-link to="counter">Counter</router-link>
         </p>
         <p>
-            <router-link to="help">help</router-link>
+            <router-link to="square">Square</router-link>
+        </p>
+        <p>
+            <router-link to="help">Help</router-link>
         </p>
     </div>
 </template>

@@ -1,4 +1,3 @@
-export const say = ({ commit }) => {
-    console.log('say!!!');
-    commit('say');
+export const reset = ({ commit }) => {
+    commit('reset');
 };

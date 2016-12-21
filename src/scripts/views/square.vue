@@ -1,15 +1,15 @@
 <template>
     <div>
-        <h1>counter</h1>
+        <h1>square</h1>
         <p>
-            Clicked: {{ count }} times
+            number: {{ number }}
         </p>
         <p>
-            doubleTimes: {{ doubleCount }}
+            square: {{ square }}
         </p>
         <p>
-            <button @click="increment">+</button>
-            <button @click="decrement">-</button>
+            <button @click="plus">+</button>
+            <button @click="minus">-</button>
         </p>
         <p>
             <button @click="reset">reset</button>
@@ -23,12 +23,12 @@
     export default {
         computed: {
             ...mapState({
-                count: state => state.count.count,
+                number: state => state.square.number,
             }),
-            ...mapGetters(['doubleCount']),
+            ...mapGetters(['square']),
         },
         methods: {
-            ...mapActions(['increment', 'decrement', 'reset']),
+            ...mapActions(['plus', 'minus', 'reset']),
         },
     };
 </script>
