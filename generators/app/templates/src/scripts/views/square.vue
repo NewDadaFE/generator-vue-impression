@@ -1,20 +1,24 @@
 <template>
-    <div>
-        <h1>square</h1>
-        <p>
-            number: {{ number }}
-        </p>
-        <p>
-            square: {{ square }}
-        </p>
-        <p>
-            <button @click="plus">+</button>
-            <button @click="minus">-</button>
-        </p>
-        <p>
-            <button @click="reset">reset</button>
-        </p>
-    </div>
+    <flex direction="column">
+        <navbar>
+            <router-link :to="{path: '/'}">返回</router-link>
+            <h5 slot="body">Square</h5>
+        </navbar>
+        <flex-item>
+            <h1>square</h1>
+            <p>
+                number: {{ number }}
+            </p>
+            <p>
+                square: {{ square }}
+            </p>
+            <p>
+                <btn theme="primary" @click="plus">加</btn>
+                <btn theme="secondary" @click="minus">减</btn>
+                <btn theme="default" @click="reset">重置</btn>
+            </p>
+        </flex-item>
+    </flex>
 </template>
 
 <script>
@@ -30,5 +34,8 @@
         methods: {
             ...mapActions(['plus', 'minus', 'reset']),
         },
+        mounted() {
+            console.log(this);
+        }
     };
 </script>

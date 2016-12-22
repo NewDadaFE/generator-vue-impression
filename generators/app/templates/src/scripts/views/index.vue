@@ -1,14 +1,15 @@
 <template>
-    <div>
-        <h3>hello, impression!</h3>
-        <p>
-            <router-link to="counter">Counter</router-link>
-        </p>
-        <p>
-            <router-link to="square">Square</router-link>
-        </p>
-        <p>
-            <router-link to="help">Help</router-link>
-        </p>
-    </div>
+    <flex direction="column">
+        <navbar>
+            <h5 slot="body">vue-impression</h5>
+        </navbar>
+        <flex-item>
+            <group-title>hello, impression!</group-title>
+            <group>
+                <cell to="counter">Counter</cell>
+                <cell to="square">Square</cell>
+                <cell to="help">help</cell>
+            </group>
+        </flex-item>
+    </flex>
 </template>

@@ -1,3 +1,3 @@
 module.exports = {
-    extends: ['vue-impression']
+    extends: ['vue-impression'],
 };
