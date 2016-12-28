@@ -25,7 +25,7 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['', '.js', 'vue']
+        extensions: ['', '.js', '.vue']
     },
     module: {
         loaders: [{
