@@ -22,7 +22,6 @@ const routes = [{
     component: Help,
 }];
 
-
 export default new VueRouter({
     // base: __dirname,
     scrollBehavior: () => ({ y: 0 }),

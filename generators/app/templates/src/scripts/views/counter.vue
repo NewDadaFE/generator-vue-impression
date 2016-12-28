@@ -8,28 +8,24 @@
             <h5 slot="body">Counter</h5>
         </navbar>
         <flex-item>
-            <group-title>Counter</group-title>
-            <group>
-                <cell>
-                    Clicked: {{ count }} times
-                </cell>
-                <cell>
-                    doubleTimes: {{ doubleCount }}
-                </cell>
-                <cell>
-                    <btn theme="primary" size="sm" @click="increment"><icon name="plus" size="lg"/></btn>
-                    <btn theme="secondary" size="sm" @click="decrement"><icon name="minus" size="lg" /></btn>
-                    <btn theme="default" size="sm" slot="footer" @click="reset">RESET</btn>
-                </cell>
-            </group>
+            <counter
+                :count="count"
+                :doubleCount="doubleCount"
+                :increment="increment"
+                :decrement="decrement"
+                :reset="reset" />
         </flex-item>
     </flex>
 </template>
 
 <script>
     import { mapState, mapActions, mapGetters } from 'vuex';
+    import Counter from '../components/Counter';
 
     export default {
+        components: {
+            Counter,
+        },
         computed: {
             ...mapState({
                 count: state => state.count.count,

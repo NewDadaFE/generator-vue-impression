@@ -28,17 +28,17 @@ module.exports = {
         fallback: [path.join(__dirname, 'node_modules')],
     },
     module: {
-        // preLoaders:[{
-        //     test: /\.vue$/,
-        //     loader: 'eslint',
-        //     include: path.join(__dirname, 'src'),
-        //     exclude: /node_modules/,
-        // }, {
-        //     test: /\.js$/,
-        //     loader: 'eslint',
-        //     include: path.join(__dirname, 'src'),
-        //     exclude: /node_modules/,
-        // }],
+        preLoaders: [{
+            test: /\.vue$/,
+            loader: 'eslint',
+            include: path.join(__dirname, 'src'),
+            exclude: /node_modules/,
+        }, {
+            test: /\.js$/,
+            loader: 'eslint',
+            include: path.join(__dirname, 'src'),
+            exclude: /node_modules/,
+        }],
         loaders: [{
             test: /\.vue$/,
             loader: 'vue',
@@ -58,6 +58,9 @@ module.exports = {
             loader: 'json',
         }],
     },
+    eslint: {
+        formatter: require('eslint-friendly-formatter'),
+    },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
@@ -69,4 +72,16 @@ module.exports = {
             inject: true,
         }),
     ],
+    devServer: {
+        contentBase: './build',
+        publicPath: '/scripts',
+        hot: true,
+        historyApiFallback: true,
+        stats: {
+            colors: true,
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+    },
 };

@@ -77,11 +77,6 @@ module.exports = yeoman.Base.extend({
         );
 
         this.fs.copy(
-            this.templatePath('server.js'),
-            this.destinationPath('server.js')
-        );
-
-        this.fs.copy(
             this.templatePath('webpack.dev.config.js'),
             this.destinationPath('webpack.dev.config.js')
         );
@@ -206,6 +201,12 @@ module.exports = yeoman.Base.extend({
         this.fs.copy(
             this.templatePath('src/scripts/mutations/square.js'),
             this.destinationPath('src/scripts/mutations/square.js')
+        );
+
+        // components
+        this.fs.copy(
+            this.templatePath('src/scripts/components/Counter.vue'),
+            this.destinationPath('src/scripts/components/Counter.vue')
         );
 
         // views
