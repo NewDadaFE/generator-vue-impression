@@ -24,6 +24,8 @@ const routes = [{
 
 export default new VueRouter({
     // base: __dirname,
-    scrollBehavior: () => ({ y: 0 }),
+    scrollBehavior() {
+        return { y: 0 };
+    },
     routes,
 });
