@@ -77,6 +77,11 @@ module.exports = yeoman.Base.extend({
         );
 
         this.fs.copy(
+            this.templatePath('eslintignore'),
+            this.destinationPath('.eslintignore')
+        );
+
+        this.fs.copy(
             this.templatePath('webpack.dev.config.js'),
             this.destinationPath('webpack.dev.config.js')
         );
