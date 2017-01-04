@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.0",
   "scripts": {
     "eslint": "eslint --fix src/scripts",
     "start": "gulp && webpack-dashboard -- webpack-dev-server --config webpack.dev.config.js --colors --port 9008",
