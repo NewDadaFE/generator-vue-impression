@@ -49,7 +49,7 @@ module.exports = {
             exclude: /node_modules/,
         }, {
             test: /\.scss$/,
-            loaders: ['style', 'css', 'scss'],
+            loaders: ['style', 'css', 'sass'],
         }, {
             test: /\.(jpe?g|png|gif|svg)$/i,
             loader: 'url',
