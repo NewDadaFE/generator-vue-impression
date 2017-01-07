@@ -1,5 +1,5 @@
-const domain = 'http://fe.imdada.cn/';
+const domain = 'https://github.com/';
 
 export default {
-    LOGIN: `${domain}login`
+    GITHUB: `${domain}NewDadaFE`
 };
