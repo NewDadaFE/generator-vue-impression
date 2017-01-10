@@ -82,6 +82,11 @@ module.exports = yeoman.Base.extend({
         );
 
         this.fs.copy(
+            this.templatePath('scss-lint.yaml'),
+            this.destinationPath('.scss-lint.yaml')
+        );
+
+        this.fs.copy(
             this.templatePath('webpack.dev.config.js'),
             this.destinationPath('webpack.dev.config.js')
         );
