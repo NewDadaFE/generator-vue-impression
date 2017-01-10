@@ -161,11 +161,6 @@ module.exports = yeoman.Base.extend({
             this.destinationPath('src/scripts/router.js')
         );
 
-        this.fs.copy(
-            this.templatePath('src/scripts/App.vue'),
-            this.destinationPath('src/scripts/App.vue')
-        );
-
         // constants
         this.fs.copy(
             this.templatePath('src/scripts/constants/URL.js'),
