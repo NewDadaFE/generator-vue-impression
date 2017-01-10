@@ -55,6 +55,7 @@
     "json-loader": "^0.5.4",
     "node-sass": "^3.13.0",
     "sass-loader": "^3.2.0",
+    "style-loader": "*",
     "url-loader": "^0.5.7",
     "vue-loader": "^10.0.0",
     "vue-style-loader": "^1.0.0",
