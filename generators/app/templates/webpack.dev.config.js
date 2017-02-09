@@ -84,7 +84,7 @@ module.exports = {
             'Access-Control-Allow-Origin': '*',
         },
         proxy: {
-            '/v2/*': {
+            '/v2/book/search': {
               target: 'https://api.douban.com',
               secure: false,
               changeOrigin: true,
