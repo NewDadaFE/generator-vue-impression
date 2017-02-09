@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     imagemin = require('gulp-imagemin'),
     cssmin = require('gulp-minify-css'),
-    sequence = require('gulp-run-sequence'),
+    sequence = require('run-sequence'),
     autoprefixer = require('gulp-autoprefixer');
 
 
