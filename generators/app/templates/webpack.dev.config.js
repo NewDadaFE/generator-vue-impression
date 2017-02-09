@@ -83,5 +83,12 @@ module.exports = {
         headers: {
             'Access-Control-Allow-Origin': '*',
         },
+        proxy: {
+            '/v2/*': {
+              target: 'https://api.douban.com',
+              secure: false,
+              changeOrigin: true,
+            }
+        }
     },
 };

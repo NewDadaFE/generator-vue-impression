@@ -1,5 +1,5 @@
-const domain = 'https://github.com/';
+const domain = '/';
 
 export default {
-    GITHUB: `${domain}NewDadaFE`
+    SEARCH: `${domain}v2/book/search`,
 };
