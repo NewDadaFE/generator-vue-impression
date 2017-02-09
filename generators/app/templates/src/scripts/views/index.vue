@@ -8,7 +8,7 @@
             <group>
                 <cell to="counter">Counter</cell>
                 <cell to="square">Square</cell>
-                <cell to="help">help</cell>
+                <cell to="search">search</cell>
             </group>
         </flex-item>
     </flex>

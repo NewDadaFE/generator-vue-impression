@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Index from './views/index';
 import Counter from './views/counter';
 import Square from './views/square';
-import Help from './views/help';
+import Search from './views/search';
 
 Vue.use(VueRouter);
 
@@ -18,8 +18,8 @@ const routes = [{
     path: '/square',
     component: Square,
 }, {
-    path: '/help',
-    component: Help,
+    path: '/search',
+    component: Search,
 }];
 
 export default new VueRouter({

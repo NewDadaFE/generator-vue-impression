@@ -252,22 +252,30 @@ module.exports = yeoman.Base.extend({
                 this.templatePath('src/scripts/actions/index.js'),
                 this.destinationPath('src/scripts/actions/index.js')
             );
+
             this.fs.copy(
                 this.templatePath('src/scripts/actions/base.js'),
                 this.destinationPath('src/scripts/actions/base.js')
             );
+
             this.fs.copy(
                 this.templatePath('src/scripts/actions/count.js'),
                 this.destinationPath('src/scripts/actions/count.js')
             );
+
             this.fs.copy(
                 this.templatePath('src/scripts/actions/square.js'),
                 this.destinationPath('src/scripts/actions/square.js')
             );
+
+            this.fs.copy(
+                this.templatePath('src/scripts/actions/search.js'),
+                this.destinationPath('src/scripts/actions/search.js')
+            );
         } else if(this.props.projectType === 'simple') {
             this.fs.copy(
-                this.templatePath('src/scripts/actions/base.js'),
-                this.destinationPath('src/scripts/actions/base.js')
+                this.templatePath('src/scripts/actions_simple/search.js'),
+                this.destinationPath('src/scripts/actions/search.js')
             );
         }
 
@@ -277,13 +285,20 @@ module.exports = yeoman.Base.extend({
                 this.templatePath('src/scripts/mutations/index.js'),
                 this.destinationPath('src/scripts/mutations/index.js')
             );
+
             this.fs.copy(
                 this.templatePath('src/scripts/mutations/count.js'),
                 this.destinationPath('src/scripts/mutations/count.js')
             );
+
             this.fs.copy(
                 this.templatePath('src/scripts/mutations/square.js'),
                 this.destinationPath('src/scripts/mutations/square.js')
+            );
+
+            this.fs.copy(
+                this.templatePath('src/scripts/mutations/search.js'),
+                this.destinationPath('src/scripts/mutations/search.js')
             );
         }
 
@@ -293,12 +308,12 @@ module.exports = yeoman.Base.extend({
                 this.templatePath('src/scripts/components/Counter.vue'),
                 this.destinationPath('src/scripts/components/Counter.vue')
             );
-        } else if(this.props.projectType === 'activity') {
-           this.fs.copy(
-                this.templatePath('src/scripts/components_activity/BookCard.vue'),
-                this.destinationPath('src/scripts/components/BookCard.vue')
-            );
         }
+
+       this.fs.copy(
+            this.templatePath('src/scripts/components/BookCard.vue'),
+            this.destinationPath('src/scripts/components/BookCard.vue')
+        );
 
         // views
         if(this.props.projectType === 'complete') {
@@ -318,8 +333,8 @@ module.exports = yeoman.Base.extend({
             );
 
             this.fs.copy(
-                this.templatePath('src/scripts/views/help.vue'),
-                this.destinationPath('src/scripts/views/help.vue')
+                this.templatePath('src/scripts/views/search.vue'),
+                this.destinationPath('src/scripts/views/search.vue')
             );
         } else if(this.props.projectType === 'simple') {
             this.fs.copy(
@@ -328,8 +343,8 @@ module.exports = yeoman.Base.extend({
             );
 
             this.fs.copy(
-                this.templatePath('src/scripts/views_simple/help.vue'),
-                this.destinationPath('src/scripts/views/help.vue')
+                this.templatePath('src/scripts/views_simple/search.vue'),
+                this.destinationPath('src/scripts/views/search.vue')
             );
         } else {
             this.fs.copy(
