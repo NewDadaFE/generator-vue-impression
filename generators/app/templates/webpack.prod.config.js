@@ -25,7 +25,11 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['', '.js', '.vue']
+        extensions: ['', '.js', '.vue'],
+        fallback: [path.join(__dirname, 'node_modules')],
+        alias: {
+            vue$: 'vue/dist/vue',
+        },
     },
     module: {
         loaders: [{
