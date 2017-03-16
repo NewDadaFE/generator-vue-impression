@@ -68,5 +68,5 @@ gulp.task('default', function(cb) {
 
 // 正式环境
 gulp.task('prod', function(cb) {
-    sequence('clean', 'copy', 'min', 'sass', cb);
+    sequence('clean', 'copy', 'sass', 'min', cb);
 });
