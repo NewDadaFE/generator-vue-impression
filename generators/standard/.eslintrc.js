@@ -22,7 +22,8 @@ module.exports = {
   globals: {
     __DEV__: false,
     fetch: false,
-    wx: false
+    wx: false,
+    AMap: false
   },
 
   rules: {
@@ -32,6 +33,8 @@ module.exports = {
       { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }
     ],
     'newline-after-var': 'off',
-    'import/imports-first': 'off'
+    'import/imports-first': 'off',
+    'no-unused-vars': 1,
+    'no-console': ['warn', { allow: ['info', 'warn', 'error'] }]
   }
 }

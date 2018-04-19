@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import book from './modules/book/'
+import count from './modules/count/'
 
 const modules = {
-  book
+  book,
+  count
 }
 
 Vue.use(Vuex)

@@ -13,7 +13,12 @@ npm install yarn -g
 yarn start
 ```
 
-## 技术栈
+### deploy
+```bash
+yarn run deploy
+```
+
+## Tech Stack
 - Vue 2.0
 - Vuex
 - Vue-router

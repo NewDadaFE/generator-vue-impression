@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import BookView from '../modules/book/view'
+import BookContainer from '../modules/book/container/'
+import CountContainer from '../modules/count/Container'
 
 Vue.use(VueRouter)
 
@@ -8,7 +9,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: BookView
+    component: CountContainer
+  },
+  {
+    path: '/book',
+    component: BookContainer
   }
 ]
 
