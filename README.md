@@ -25,7 +25,7 @@ yo vue-impression
 
 ## License
 
-MIT © [NewDadaFE](https://github.com/shenlq)
+MIT © [NewDadaFE](https://github.com/NewDadaFE)
 
 
 [npm-image]: https://badge.fury.io/js/generator-vue-impression.svg
