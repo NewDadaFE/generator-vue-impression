@@ -1,0 +1,16 @@
+/node_modules
+/bower_components
+/local
+/cache
+/app
+*.log
+/.idea
+/.sass-cache
+/bower_components
+/build
+/.qshell
+.idea/
+.cache/
+.vscode
+yarn-error.log
+npm-error.log
