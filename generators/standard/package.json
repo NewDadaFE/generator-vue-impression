@@ -1,12 +1,17 @@
 {
-  "version": "0.0.1",
+  "version": "1.0.0",
   "name": "standard",
   "scripts": {
-    "eslint": "eslint --fix src",
     "start": "webpack-dev-server --config build/webpack.config.dev.js",
-    "prebuild": "npm run eslint",
     "build": "webpack -p --config build/webpack.config.prod.js",
-    "publish": "npm run build"
+    "deploy": "npm run build && node deploy.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "es6-promise": "^4.2.4",
