@@ -1,7 +1,9 @@
 <template>
   <flex direction="column">
     <navbar>
-      <router-link :to="{path: '/'}">返回</router-link>
+      <router-link :to="{path: '/'}">
+        <icon name="chevron-left" size="lg" left /> 返回
+      </router-link>
       <h4 slot="body">搜索书籍</h4>
     </navbar>
     <flex-item>

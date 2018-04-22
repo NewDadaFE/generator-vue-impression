@@ -1,22 +1,26 @@
 <template>
-  <div>
-    <span>图书：</span>
-    <input
-      type="text"
-      class="form-control"
-      @inputchange="handleInputChange"
-      :value="keyword">
-    <button class="btn" @click="handleSearchBook">搜索</button>
-  </div>
+  <search
+    class="search"
+    :loading="loading"
+    placeholder="请输入图书名称"
+    :value="keyword"
+    @change="handleInputChange"
+    @click="handleSearchBook" />
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import Search from '@/app/component/SearchInput';
 
 export default {
+  components: {
+    search: Search,
+  },
+
   data() {
     return {
       keyword: '肖申克的救赎',
+      loading: false,
     }
   },
 
@@ -27,14 +31,23 @@ export default {
   methods: {
     ...mapActions('book', ['searchBook']),
 
-    handleInputChange(e) {
-      this.keyword = e.target.value
+    handleInputChange(value) {
+      this.keyword = value
     },
 
     handleSearchBook() {
-      this.searchBook(this.keyword);
+      this.loading = true;
+      this.searchBook(this.keyword).then(() => {
+        this.loading = false;
+      })
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.search {
+  padding: 10px;
+}
+</style>
 

@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <p :show="!books || books.length < 1">加载中...</p>
-    <book-card v-for="book in books" :book="book" :key="book.id" />
+  <div class="container">
+    <p v-if="book.count">
+      共搜索到了<span class="total">{{getTotal}}</span>书籍
+    </p>
+    <div v-for="item in book.books" :key="item.id" class="card">
+      <div class="card-title">{{item.title}}-{{item.author.join('/')}}</div>
+      <div>{{item.catalog}}</div>
+    </div>
   </div>
 </template>
 
@@ -16,9 +21,35 @@ export default {
 
   computed: {
     ...mapState('book', {
-      books: book => book.books,
+      book: book => book
     }),
+
+    getTotal() {
+      return `${this.book.count} / ${this.book.count}`
+    },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  padding: 10px;
+  border-radius: 5px;
+
+  .total {
+    font-weight: bold;
+    padding: 0 5px;
+  }
+}
+.card {
+  margin: 10px 0;
+  padding: 10px;
+
+  .card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+</style>
 

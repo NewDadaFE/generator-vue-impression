@@ -1,10 +1,13 @@
 <template>
-  <flex direction="column" class="container">
+  <flex direction="column">
     <navbar>
       <router-link :to="{path: '/'}">
         <icon name="chevron-left" size="lg" left /> 返回
       </router-link>
       <h5 slot="body">Counter</h5>
+      <router-link slot="footer" :to="{path: '/book'}">
+        goBook
+      </router-link>
     </navbar>
     <flex-item>
       <counter
@@ -36,11 +39,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.container {
-  height: 667px;
-  width: 100vw;
-}
-</style>
-
