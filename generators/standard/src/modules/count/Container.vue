@@ -1,5 +1,5 @@
 <template>
-  <flex direction="column">
+  <flex direction="column" class="container">
     <navbar>
       <router-link :to="{path: '/'}">
         <icon name="chevron-left" size="lg" left /> 返回
@@ -14,6 +14,20 @@
         :decrement="decrement"
         :reset="reset" />
     </flex-item>
+
+    <group>
+            <cell>
+                <timeline>
+                    <timeline-item>
+                        <strong class="text-primary">已签收</strong>
+                    </timeline-item>
+                    <timeline-item>快递到达泉州</timeline-item>
+                    <timeline-item>快递到达福州</timeline-item>
+                    <timeline-item>交付快递</timeline-item>
+                    <timeline-item>订单已生成</timeline-item>
+                </timeline>
+            </cell>
+        </group>
   </flex>
 </template>
 
@@ -36,3 +50,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.container {
+  height: 667px;
+  width: 100vw;
+  padding: 10px;
+}
+</style>
+

@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "mocha": "^5.1.1",
+    "postcss-pxtorem": "^4.0.1",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.7.0"
   }

@@ -91,7 +91,7 @@ module.exports = class extends Generator {
       }
     })
 
-    // copy/overwrite-README.md
+    // copy-README.md
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
@@ -101,7 +101,7 @@ module.exports = class extends Generator {
       }
     )
 
-    // package.json
+    // cp-package.json
     let pkg = this.fs.readJSON(this.templatePath('package.json'))
     pkg = Object.assign(pkg, {
       name: this.props.name,
