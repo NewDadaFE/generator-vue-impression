@@ -1,6 +1,6 @@
 {
   "name": "generator-vue-impression",
-  "version": "3.0.0",
+  "version": "2.0.0",
   "description": "Yeoman generator for Vue 2.0 project.",
   "main": "index.js",
   "repository": "https://github.com/NewDadaFE/generator-vue-impression",
@@ -13,10 +13,5 @@
     "yeoman-generator": "^2.0.4",
     "yosay": "^2.0.2"
   },
-  "devDependencies": {
-    "mocha": "^5.1.1",
-    "postcss-pxtorem": "^4.0.1",
-    "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.7.0"
-  }
+  "devDependencies": {}
 }
