@@ -35,14 +35,14 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'install',
+        name: 'isInstall',
         message: 'Would you like to install dependencies?'
       }
     ]
 
     return this.prompt(prompts)
       .then(answer => {
-        if (!answer.install) return answer
+        if (!answer.isInstall) return answer
 
         return this.prompt([
           {
@@ -74,14 +74,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    const { name, description } = this.props
+
     // 设置copy源文件位置
     this.sourceRoot(path.join(__dirname, 'standard'))
 
-    const ignores = [
+    const ignore = [
       this.templatePath('README.md'),
       this.templatePath('package.json'),
       this.templatePath('dist/**'),
-      this.templatePath('node_modules/**')
+      this.templatePath('node_modules/**'),
+      this.templatePath('index.html')
     ]
 
     // copy文件夹
@@ -89,32 +92,38 @@ module.exports = class extends Generator {
       // options: https://github.com/isaacs/node-glob#options
       globOptions: {
         dot: true,
-        ignore: ignores
+        ignore
       }
     })
 
-    // copy-README.md
+    // copy README.md
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
-      {
-        name: this.props.name,
-        description: this.props.description
-      }
+      { name, description }
+    )
+
+    // copy index.html
+    this.fs.copyTpl(
+      this.templatePath('index.html'),
+      this.destinationPath('index.html'),
+      { name }
     )
 
     // cp-package.json
     const pkg = this.fs.readJSON(this.templatePath('package.json'))
-    pkg.name = this.props.name
-    pkg.description = this.props.description
-    pkg.keywords = [this.props.name, 'Vue 2.0']
+    pkg.name = name
+    pkg.description = description
+    pkg.keywords = [name, 'Vue 2.0']
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg)
   }
 
   install() {
+    const { name, isInstall, installType } = this.props
+
     const print = installTool => {
-      this.log(yosay(`Success! Created ${chalk.cyan(this.props.name)}!`))
+      this.log(yosay(`Success! Created ${chalk.cyan(name)}!`))
 
       this.log('Inside that directory, you can run several commands:')
       this.log(chalk`
@@ -130,24 +139,25 @@ module.exports = class extends Generator {
 
       this.log('We suggest that you begin by typing:')
       this.log(chalk`
-      {cyan cd ${this.props.name}}
+      {cyan cd ${name}}
       {cyan ${installTool} start}
       `)
 
       this.log(chalk.green('Happy hacking!'))
     }
 
-    if (!this.props.install) {
+    if (!isInstall) {
       print('yarn')
       return
     }
 
-    const tool = this.props.installType
     const execInstall =
-      tool === 'yarn' ? this.yarnInstall.bind(this) : this.npmInstall.bind(this)
+      installType === 'yarn'
+        ? this.yarnInstall.bind(this)
+        : this.npmInstall.bind(this)
 
     execInstall().then(() => {
-      print(tool)
+      print(installType)
     })
   }
 }
