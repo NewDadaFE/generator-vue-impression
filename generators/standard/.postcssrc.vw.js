@@ -5,9 +5,10 @@ module.exports = {
     autoprefixer: {
       browsers: ['last 90 version', '> 90%']
     },
-    'postcss-pxtorem': {
-      rootValue: 14,
-      propList: ['*'],
+    'postcss-px-to-viewport': {
+      viewportWidth: 375,
+      viewportHeight: 667,
+      unitPrecision: 4,
       minPixelValue: 1,
       selectorBlackList: [/^html$/]
     }

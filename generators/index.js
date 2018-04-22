@@ -34,6 +34,13 @@ module.exports = class extends Generator {
         message: 'Please input project description:'
       },
       {
+        type: 'list',
+        name: 'adaptType',
+        message: 'Please choose you adapt type: (rem, vw)',
+        choices: ['rem', 'vw'],
+        default: 'rem'
+      },
+      {
         type: 'confirm',
         name: 'install',
         message: 'Would you like to install dependencies?'
@@ -77,17 +84,21 @@ module.exports = class extends Generator {
     // 设置copy源文件位置
     this.sourceRoot(path.join(__dirname, 'standard'))
 
+    const ignores = [
+      this.templatePath('README.md'),
+      this.templatePath('package.json'),
+      this.templatePath('dist/**'),
+      this.templatePath('.postcssrc*'),
+      this.templatePath('src/main.js'),
+      this.templatePath('node_modules/**')
+    ]
+
     // copy文件夹
     this.fs.copy(this.templatePath('.'), '.', {
       // options: https://github.com/isaacs/node-glob#options
       globOptions: {
         dot: true,
-        ignore: [
-          this.templatePath('README.md'),
-          this.templatePath('package.json'),
-          this.templatePath('dist/**'),
-          this.templatePath('node_modules/**')
-        ]
+        ignore: ignores
       }
     })
 
@@ -101,13 +112,39 @@ module.exports = class extends Generator {
       }
     )
 
+    // cp postcss/main.js
+    let subfix = ''
+    let install = {
+      dep: {
+        'postcss-pxtorem': '^4.0.1'
+      },
+      prod: {}
+    }
+    if (this.props.adaptType === 'vw') {
+      subfix = 'vw.'
+      install.dep = {
+        'postcss-px-to-viewport': '^0.0.3'
+      }
+      install.prod = {
+        'viewport-units-buggyfill': '^0.6.2'
+      }
+    }
+
+    this.fs.copy(this.templatePath(`.postcssrc.${subfix}js`), `.postcssrc.js`)
+    this.fs.copy(this.templatePath(`src/main.${subfix}js`), `src/main.js`)
+
     // cp-package.json
-    let pkg = this.fs.readJSON(this.templatePath('package.json'))
-    pkg = Object.assign(pkg, {
-      name: this.props.name,
-      description: this.props.description,
-      keywords: [this.props.name, 'Vue 2.0']
-    })
+    const pkg = this.fs.readJSON(this.templatePath('package.json'))
+    pkg.name = this.props.name
+    pkg.description = this.props.description
+    pkg.keywords = [this.props.name, 'Vue 2.0']
+    pkg.devDependencies = { ...pkg.devDependencies, ...install.dep }
+    pkg.dependencies = { ...pkg.dependencies, ...install.prod }
+
+    if (this.props.adaptType === 'vw') {
+      delete pkg.devDependencies['postcss-pxtorem']
+    }
+
     this.fs.writeJSON(this.destinationPath('package.json'), pkg)
   }
 
