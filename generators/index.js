@@ -34,13 +34,6 @@ module.exports = class extends Generator {
         message: 'Please input project description:'
       },
       {
-        type: 'list',
-        name: 'adaptType',
-        message: 'Please choose you adapt type: (rem, vw)',
-        choices: ['rem', 'vw'],
-        default: 'rem'
-      },
-      {
         type: 'confirm',
         name: 'install',
         message: 'Would you like to install dependencies?'
@@ -71,7 +64,7 @@ module.exports = class extends Generator {
     if (path.basename(this.destinationPath()) !== this.props.name) {
       this.log(
         'Your generator must be inside a folder named ' +
-          chalk.blue(this.props.name) +
+          chalk.cyan(this.props.name) +
           '\n' +
           "I'll automatically create this folder."
       )
@@ -120,10 +113,41 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.log(yosay(`WOW! I'm all ${chalk.red('done')}!`))
+    const print = installTool => {
+      this.log(yosay(`Success! Created ${chalk.cyan(this.props.name)}!`))
 
-    if (!this.props.install) return
+      this.log('Inside that directory, you can run several commands:')
+      this.log(chalk`
+      {cyan ${installTool} start}
+        Starts the development server.
 
-    this.props.installType === 'yarn' ? this.yarnInstall() : this.npmInstall()
+      {cyan ${installTool} install}
+        Install dependencies.
+
+      {cyan ${installTool} run deploy}
+        depoly static files to cdn.
+      `)
+
+      this.log('We suggest that you begin by typing:')
+      this.log(chalk`
+      {cyan cd ${this.props.name}}
+      {cyan ${installTool} start}
+      `)
+
+      this.log(chalk.green('Happy hacking!'))
+    }
+
+    if (!this.props.install) {
+      print('yarn')
+      return
+    }
+
+    const tool = this.props.installType
+    const execInstall =
+      tool === 'yarn' ? this.yarnInstall.bind(this) : this.npmInstall.bind(this)
+
+    execInstall().then(() => {
+      print(tool)
+    })
   }
 }
