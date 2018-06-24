@@ -1,9 +1,0 @@
-{
-  "presets": [["env"]],
-  "comments": true,
-  "plugins": [
-    "transform-vue-jsx",
-    "transform-runtime",
-    "syntax-object-rest-spread"
-  ]
-}

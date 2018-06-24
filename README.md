@@ -1,36 +1,108 @@
-# generator-vue-impression [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Yeoman generator for Vue 2.0 project.
+# generator-vue-impression
 
-## Installation
+> Vue + Vuex + Vue Router + Vue Impression + Webpack 3
 
-First, install [Yeoman](http://yeoman.io) and generator-vue-impression using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+[English Version](./README_EN.md)
+
+## 安装
+
+首先, 安装`Yeoman`和`generator-vue-impression`:
 
 ```bash
-npm install -g yo
-npm install -g generator-vue-impression
+yarn global add yo generator-vue-impression
 ```
 
-Then generate your new project:
+然后创建新项目:
 
 ```bash
 yo vue-impression
 ```
 
-## Getting To Know Yeoman
+或者升级旧项目:
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+```bash
+cd YOUR_PROJECT_FOLDER
+yo vue-impression --upgrade
+```
+
+## 开发
+
+首先, 进入项目目录并执行如下命令:
+
+```bash
+yarn start
+```
+
+然后, 打开浏览器并访问 [http://localhost:8080](http://localhost:8080)
+
+## 发版
+
+首先, 在`package.json`文件中修改七牛云配置并加入密钥:
+
+```json
+{
+  "deploy": {
+    "DOMAIN": "fe.imdada.cn",
+    "BUCKET": "dada-fe",
+    "ACCESS_KEY": "",
+    "SECRET_KEY": ""
+  }
+}
+```
+
+然后执行如下命令之一:
+
+```bash
+# 小版本更新，如修复问题
+npm version patch -m 'Release version %s'
+
+# 大版本更新，如增加功能
+npm version minor -m 'Release version %s'
+
+# 手动指定版本号，如1.0.0
+npm version 1.0.0 -m 'Release version %s'
+
+# 测试版本
+yarn debug
+```
+
+## 最佳实践
+
+- 代码格式化
+
+  如需格式化代码，执行`yarn format`命令
+
+- 转发 API 请求
+
+  首先, 更新`package.json`文件中的配置，比如：
+
+  ```json
+  {
+    "proxy": {
+      "/api": {
+        "target": "http://localhost:3000",
+        "changeOrigin": true
+      }
+    }
+  }
+  ```
+
+  然后，重启服务：
+
+  ```bash
+  yarn start
+  ```
+
+- 遵守[style-guide][style-guide]规范
+- 使用[Vuex#Module][vuex-module]拆分 store
+- 使用[Ramda#assocPath][ramda-assocpath]更新嵌套数据
+- 使用[CSS Modules][css-modules]创建模块化样式
 
 ## License
 
-MIT © [NewDadaFE](https://github.com/NewDadaFE)
+MIT
 
-
-[npm-image]: https://badge.fury.io/js/generator-vue-impression.svg
-[npm-url]: https://npmjs.org/package/generator-vue-impression
-[travis-image]: https://travis-ci.org/NewDadaFE/generator-vue-impression.svg?branch=master
-[travis-url]: https://travis-ci.org/NewDadaFE/generator-vue-impression
-[daviddm-image]: https://david-dm.org/NewDadaFE/generator-vue-impression.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/NewDadaFE/generator-vue-impression
+[style-guide]: https://github.com/NewDadaFE/style-guide
+[vuex-module]: https://vuex.vuejs.org/zh/guide/modules.html
+[ramda-assocpath]: https://ramdajs.com/docs/#assocPath
+[css-modules]: https://github.com/css-modules/css-modules
