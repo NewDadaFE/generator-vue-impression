@@ -1,4 +1,4 @@
-# generator-vue-impression
+# generator-vue-impression has been moved into [generator](https://github.com/NewDadaFE/generator)
 
 > Vue + Vuex + Vue Router + Vue Impression + Webpack 3
 
