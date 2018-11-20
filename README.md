@@ -1,4 +1,6 @@
-# generator-vue-impression has been moved into [generator](https://github.com/NewDadaFE/generator)
+已废弃，迁移到[generator](https://github.com/NewDadaFE/generator)
+
+# generator-vue-impression
 
 > Vue + Vuex + Vue Router + Vue Impression + Webpack 3
 
